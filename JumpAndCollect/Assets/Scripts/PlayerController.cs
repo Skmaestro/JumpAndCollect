@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public SimpleInput PlayerInput { get; private set; }
+    [HideInInspector] public PlayerCollectAbility PlayerCollectAbility;
 
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float gravity = -9.81f;
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         TryGetComponent(out _playerController);
+        TryGetComponent(out PlayerCollectAbility);
         if (GetComponent<SimpleInput>())
         { 
             PlayerInput = GetComponent<SimpleInput>();
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         PlayerInput.StripInput();
         PlayerInput.SetCursorMode(false);
+        PlayerCollectAbility.UpdateUI();
     }
     void Update()
     {
@@ -107,8 +110,17 @@ public class PlayerController : MonoBehaviour
         _playerController.Move(velocity * Time.deltaTime);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.TryGetComponent<iCollectable>(out var collectible))
+        {
+            collectible.Collected(this);
+        }
+    }
 
 
+    //UI & Input
     public void UI_Resume_OnClick()
     {
         SetPause(false);

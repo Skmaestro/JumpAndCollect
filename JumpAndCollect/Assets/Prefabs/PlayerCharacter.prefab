@@ -204,6 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 120609851699531951}
   - component: {fileID: 4203116900506024919}
+  - component: {fileID: 4055599095634804924}
   - component: {fileID: 3324844031858812548}
   - component: {fileID: 7317286759318254188}
   - component: {fileID: 8592456258137530516}
@@ -245,12 +246,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d79797f29ab51499caaa014e7cb5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  PlayerCollectAbility: {fileID: 0}
   moveSpeed: 5
   gravity: -9.81
   jumpHeight: 1.5
   sensitivity: 0.5
   cameraPivot: {fileID: 7311255731995967775}
   pauseMenu: {fileID: 6390337850621984039}
+--- !u!114 &4055599095634804924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560825916125027436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760795940f7399f408b39aac7e8be745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerUI
+  UI_pointsCount: {fileID: 3815980002934997392}
 --- !u!143 &3324844031858812548
 CharacterController:
   m_ObjectHideFlags: 0
@@ -517,7 +532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.043736756, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1591,7 +1606,7 @@ GameObject:
   - component: {fileID: 5969691340880676926}
   - component: {fileID: 3815980002934997392}
   m_Layer: 5
-  m_Name: Name
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
